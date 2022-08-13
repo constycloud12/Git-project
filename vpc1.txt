@@ -1,0 +1,21 @@
+resource "aws_vpc" "svpc" {
+
+  cidr_block = var.my_cidr
+
+count= 10
+  tags = {
+    Name = var.vpc_name
+  }
+}
+
+
+
+resource "aws_subnet" "ssubnet" {
+  vpc_id     = "aws_vpc.svpc.id"
+  cidr_block = "70.0.1.0/24"
+
+  
+
+  tags = {
+    Name = "s_subnet"
+  }
